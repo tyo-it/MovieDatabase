@@ -9,7 +9,7 @@ interface MovieDatabaseService {
     suspend fun searchMovie(
         @Query("query") query: String,
         @Query("page") page: Int
-    ): PageResponse
+    ): SearchResponse
 
     @GET("movie/{movie_id}")
     suspend fun movieDetails(

@@ -2,7 +2,7 @@ package com.ittyo.moviedatabase.repository.remote
 
 import com.google.gson.annotations.SerializedName
 
-data class PageResponse(
+data class SearchResponse(
     @SerializedName("page")
     val page: Int,
 
