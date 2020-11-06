@@ -12,8 +12,9 @@ import com.ittyo.moviedatabase.repository.remote.SEARCH_STARTING_PAGE_INDEX
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
 import java.io.IOException
+import javax.inject.Inject
 
-class MovieDatabaseRepository(private val movieDatabaseService: MovieDatabaseService): MovieRepository {
+class MovieDatabaseRepository @Inject constructor(private val movieDatabaseService: MovieDatabaseService): MovieRepository {
 
     override fun searchMovie(query: String): Flow<PagingData<Movie>> {
         return Pager(

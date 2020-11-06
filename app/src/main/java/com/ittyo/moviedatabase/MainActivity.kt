@@ -5,10 +5,12 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
+ @AndroidEntryPoint
  class MainActivity : AppCompatActivity() {
 
     private lateinit var movieListAdapter: MovieListAdapter
