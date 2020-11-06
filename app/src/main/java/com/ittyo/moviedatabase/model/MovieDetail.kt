@@ -1,12 +1,12 @@
 package com.ittyo.moviedatabase.model
 
 data class MovieDetail(
+    val id: Int,
     val adult: Boolean,
     val backdropPath: String,
     val budget: Int,
     val genres: List<Genre>,
     val homepage: String,
-    val id: Int,
     val imdbId: String,
     val originalLanguage: String,
     val originalTitle: String,

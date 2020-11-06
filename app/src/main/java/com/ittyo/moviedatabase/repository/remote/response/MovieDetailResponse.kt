@@ -3,6 +3,9 @@ package com.ittyo.moviedatabase.repository.remote.response
 import com.google.gson.annotations.SerializedName
 
 data class MovieDetailResponse(
+    @SerializedName("id")
+    val id: Int,
+
     @SerializedName("adult")
     val adult: Boolean,
 
@@ -13,13 +16,10 @@ data class MovieDetailResponse(
     val budget: Int,
 
     @SerializedName("genres")
-    val genres: List<Genre>,
+    val genres: List<GenreResponse>,
 
     @SerializedName("homepage")
     val homepage: String,
-
-    @SerializedName("id")
-    val id: Int,
 
     @SerializedName("imdb_id")
     val imdbId: String,
@@ -67,7 +67,7 @@ data class MovieDetailResponse(
     val voteCount: Int
 )
 
-data class Genre(
+data class GenreResponse(
     @SerializedName("id")
     val id: Int,
 
