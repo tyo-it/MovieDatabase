@@ -1,6 +1,6 @@
 package com.ittyo.moviedatabase.model
 
-data class MovieDetailResponse(
+data class MovieDetail(
     val adult: Boolean,
     val backdropPath: String,
     val budget: Int,
