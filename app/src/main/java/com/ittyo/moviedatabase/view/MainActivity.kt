@@ -29,6 +29,7 @@ import java.io.IOException
         setContentView(R.layout.activity_main)
 
         movieListAdapter = MovieListAdapter()
+        movie_list.layoutManager = GridLayoutManager(this, 2)
         movie_list.adapter = movieListAdapter.run {
             addLoadStateListener { loadState ->
                 movie_list.isVisible = loadState.source.refresh is LoadState.NotLoading
@@ -47,7 +48,6 @@ import java.io.IOException
                 footer = LoadWithRetryAdapter{ movieListAdapter.retry() }
             )
         }
-        movie_list.layoutManager = GridLayoutManager(this, 2)
 
         input_text.setOnEditorActionListener { editText, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
