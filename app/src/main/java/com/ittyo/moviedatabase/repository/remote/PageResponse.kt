@@ -57,6 +57,6 @@ data class MovieResponse (
     val overview : String,
 
     @SerializedName("release_date")
-    val releaseDate : String
+    val releaseDate : String?
 )
 

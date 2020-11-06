@@ -5,13 +5,16 @@ import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import android.widget.Toast
 import androidx.activity.viewModels
+import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
+import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ittyo.moviedatabase.R
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import java.io.IOException
 
  @AndroidEntryPoint
  class MainActivity : AppCompatActivity() {
@@ -26,10 +29,27 @@ import kotlinx.coroutines.launch
         setContentView(R.layout.activity_main)
 
         movieListAdapter = MovieListAdapter()
-        movie_list.adapter = movieListAdapter
+        movie_list.adapter = movieListAdapter.run {
+            addLoadStateListener { loadState ->
+                movie_list.isVisible = loadState.source.refresh is LoadState.NotLoading
+                progress_bar.isVisible = loadState.source.refresh is LoadState.Loading
+                retry_button.isVisible = loadState.source.refresh is LoadState.Error
+
+                val errorState = loadState.append as? LoadState.Error
+                    ?: loadState.prepend as? LoadState.Error
+                    ?: loadState.refresh as? LoadState.Error
+
+                errorState?.let { showErrorToast(it.error) }
+            }
+
+            withLoadStateHeaderAndFooter(
+                header = LoadWithRetryAdapter{ movieListAdapter.retry() },
+                footer = LoadWithRetryAdapter{ movieListAdapter.retry() }
+            )
+        }
         movie_list.layoutManager = GridLayoutManager(this, 2)
 
-        input_text.setOnEditorActionListener { editText, actionId, event ->
+        input_text.setOnEditorActionListener { editText, actionId, _ ->
             if (actionId == EditorInfo.IME_ACTION_SEARCH) {
                 search(editText.text.toString())
                 true
@@ -37,6 +57,8 @@ import kotlinx.coroutines.launch
                 false
             }
         }
+
+        retry_button.setOnClickListener { movieListAdapter.retry() }
 
         searchMovieViewModel.lastSearchResult.observe(this) { pagingData ->
             searchJob?.cancel()
@@ -56,5 +78,14 @@ import kotlinx.coroutines.launch
 
      private fun showInfoToast(message: String) {
          Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+     }
+
+     private fun showErrorToast(error: Throwable) {
+         val message = if (error is IOException) {
+             this.getString(R.string.fetch_failed)
+         } else {
+             error.localizedMessage
+         }
+         Toast.makeText(this, message, Toast.LENGTH_LONG).show()
      }
 }

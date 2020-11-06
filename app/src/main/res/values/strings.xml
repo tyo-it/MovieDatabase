@@ -2,4 +2,6 @@
     <string name="app_name">Movie Database</string>
     <string name="poster_image">movie poster</string>
     <string name="hint_search">Search Movies</string>
+    <string name="retry">RETRY</string>
+    <string name="fetch_failed">Failed to fetch data from server</string>
 </resources>
