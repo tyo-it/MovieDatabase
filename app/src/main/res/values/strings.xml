@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Movie Database</string>
     <string name="poster_image">movie poster</string>
+    <string name="hint_search">Search Movies</string>
 </resources>

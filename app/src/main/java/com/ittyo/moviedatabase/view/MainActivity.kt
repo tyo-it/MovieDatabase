@@ -2,6 +2,8 @@
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.EditorInfo
+import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.GridLayoutManager
@@ -27,13 +29,32 @@ import kotlinx.coroutines.launch
         movie_list.adapter = movieListAdapter
         movie_list.layoutManager = GridLayoutManager(this, 2)
 
+        input_text.setOnEditorActionListener { editText, actionId, event ->
+            if (actionId == EditorInfo.IME_ACTION_SEARCH) {
+                search(editText.text.toString())
+                true
+            } else {
+                false
+            }
+        }
+
         searchMovieViewModel.lastSearchResult.observe(this) { pagingData ->
             searchJob?.cancel()
             searchJob = lifecycleScope.launch {
                 movieListAdapter.submitData(pagingData)
             }
         }
-
-        searchMovieViewModel.searchMovie("superman")
     }
+
+    private fun search(query: String) {
+        if (query.isBlank()) {
+            showInfoToast("empty search input")
+            return
+        }
+        searchMovieViewModel.searchMovie(query)
+    }
+
+     private fun showInfoToast(message: String) {
+         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+     }
 }
