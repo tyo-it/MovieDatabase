@@ -1,4 +1,4 @@
-package com.ittyo.moviedatabase.repository.remote
+package com.ittyo.moviedatabase.repository.remote.response
 
 data class MovieDetailResponse(
     val adult: Boolean,

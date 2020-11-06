@@ -1,4 +1,4 @@
-package com.ittyo.moviedatabase.repository.remote
+package com.ittyo.moviedatabase.repository.remote.response
 
 import com.google.gson.annotations.SerializedName
 

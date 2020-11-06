@@ -1,5 +1,7 @@
 package com.ittyo.moviedatabase.repository.remote
 
+import com.ittyo.moviedatabase.repository.remote.response.MovieDetailResponse
+import com.ittyo.moviedatabase.repository.remote.response.SearchResponse
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
