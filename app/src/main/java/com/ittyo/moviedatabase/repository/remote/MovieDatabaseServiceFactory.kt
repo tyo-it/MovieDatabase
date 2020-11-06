@@ -1,4 +1,4 @@
-package com.ittyo.repository.remote
+package com.ittyo.moviedatabase.repository.remote
 
 import com.google.gson.Gson
 import okhttp3.Interceptor

@@ -1,6 +1,6 @@
-package com.ittyo.model
+package com.ittyo.moviedatabase.model
 
-import com.ittyo.repository.remote.MovieResponse
+import com.ittyo.moviedatabase.repository.remote.MovieResponse
 
 data class Movie (
     val id : Int,

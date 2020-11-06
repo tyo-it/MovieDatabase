@@ -1,14 +1,14 @@
-package com.ittyo.repository
+package com.ittyo.moviedatabase.repository
 
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.PagingSource
-import com.ittyo.model.Movie
-import com.ittyo.model.fromResponse
-import com.ittyo.repository.remote.MovieDatabaseService
-import com.ittyo.repository.remote.SEARCH_PAGE_SIZE
-import com.ittyo.repository.remote.SEARCH_STARTING_PAGE_INDEX
+import com.ittyo.moviedatabase.model.Movie
+import com.ittyo.moviedatabase.model.fromResponse
+import com.ittyo.moviedatabase.repository.remote.MovieDatabaseService
+import com.ittyo.moviedatabase.repository.remote.SEARCH_PAGE_SIZE
+import com.ittyo.moviedatabase.repository.remote.SEARCH_STARTING_PAGE_INDEX
 import kotlinx.coroutines.flow.Flow
 import retrofit2.HttpException
 import java.io.IOException
