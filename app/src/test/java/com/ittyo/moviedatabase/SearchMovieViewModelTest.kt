@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.paging.PagingData
 import com.ittyo.moviedatabase.model.Movie
 import com.ittyo.moviedatabase.repository.MovieRepository
-import com.ittyo.moviedatabase.repository.remote.MovieResponse
+import com.ittyo.moviedatabase.view.SearchMovieViewModel
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
@@ -16,7 +16,6 @@ import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
 import org.junit.After
-import org.junit.Assert.*
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test

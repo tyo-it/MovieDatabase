@@ -1,4 +1,4 @@
-package com.ittyo.moviedatabase
+package com.ittyo.moviedatabase.view
 
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +9,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.ittyo.moviedatabase.R
 import com.ittyo.moviedatabase.model.Movie
 
 class MovieListAdapter: PagingDataAdapter<Movie, MovieListAdapter.ViewHolder>(MOVIE_COMPARATOR) {
