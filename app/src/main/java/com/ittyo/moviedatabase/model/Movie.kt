@@ -19,21 +19,21 @@ data class Movie (
     val releaseDate : String?
 )
 
-fun fromResponse(movieResponse: MovieResponse): Movie {
+fun MovieResponse.toMovieModel(): Movie {
     return Movie(
-        id = movieResponse.id,
-        popularity = movieResponse.popularity,
-        voteCount = movieResponse.voteCount,
-        video = movieResponse.video,
-        posterPath = movieResponse.posterPath,
-        adult = movieResponse.adult,
-        backdropPath = movieResponse.backdropPath,
-        originalLanguage = movieResponse.originalLanguage,
-        originalTitle = movieResponse.originalTitle,
-        genreIds = movieResponse.genreIds,
-        title = movieResponse.title,
-        voteAverage = movieResponse.voteAverage,
-        overview = movieResponse.overview,
-        releaseDate = movieResponse.releaseDate
+        id = this.id,
+        popularity = this.popularity,
+        voteCount = this.voteCount,
+        video = this.video,
+        posterPath = this.posterPath,
+        adult = this.adult,
+        backdropPath = this.backdropPath,
+        originalLanguage = this.originalLanguage,
+        originalTitle = this.originalTitle,
+        genreIds = this.genreIds,
+        title = this.title,
+        voteAverage = this.voteAverage,
+        overview = this.overview,
+        releaseDate = this.releaseDate
     )
 }

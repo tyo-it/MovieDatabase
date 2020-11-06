@@ -5,7 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.PagingSource
 import com.ittyo.moviedatabase.model.Movie
-import com.ittyo.moviedatabase.model.fromResponse
+import com.ittyo.moviedatabase.model.toMovieModel
 import com.ittyo.moviedatabase.repository.remote.MovieDatabaseService
 import com.ittyo.moviedatabase.repository.remote.SEARCH_PAGE_SIZE
 import com.ittyo.moviedatabase.repository.remote.SEARCH_STARTING_PAGE_INDEX
@@ -40,7 +40,7 @@ class SearchMoviePagingSource(
             val response = movieDatabaseService.searchMovie(query, position)
             val movies = response.results
             LoadResult.Page(
-                data = movies.map { fromResponse(it) },
+                data = movies.map { it.toMovieModel() },
                 prevKey = if (position == SEARCH_STARTING_PAGE_INDEX) null else position - 1,
                 nextKey = if (movies.isEmpty()) null else position + 1
             )
