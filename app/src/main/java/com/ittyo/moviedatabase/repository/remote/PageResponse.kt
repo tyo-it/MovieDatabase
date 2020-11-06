@@ -27,7 +27,7 @@ data class MovieResponse (
     val video : Boolean,
 
     @SerializedName("poster_path")
-    val posterPath : String,
+    val posterPath : String?,
 
     @SerializedName("id")
     val id : Int,
@@ -36,7 +36,7 @@ data class MovieResponse (
     val adult : Boolean,
 
     @SerializedName("backdrop_path")
-    val backdropPath : String,
+    val backdropPath : String?,
 
     @SerializedName("original_language")
     val originalLanguage : String,
