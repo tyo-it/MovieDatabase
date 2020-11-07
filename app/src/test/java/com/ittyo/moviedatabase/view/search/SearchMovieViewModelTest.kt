@@ -1,4 +1,4 @@
-package com.ittyo.moviedatabase
+package com.ittyo.moviedatabase.view.search
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
