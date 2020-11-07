@@ -12,7 +12,9 @@ import com.bumptech.glide.Glide
 import com.ittyo.moviedatabase.R
 import com.ittyo.moviedatabase.model.Movie
 
-class MovieListAdapter: PagingDataAdapter<Movie, MovieListAdapter.ViewHolder>(MOVIE_COMPARATOR) {
+class MovieListAdapter(
+    private val onMovieItemSelected: (movieId: Int) -> Unit
+): PagingDataAdapter<Movie, MovieListAdapter.ViewHolder>(MOVIE_COMPARATOR) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView = LayoutInflater.from(parent.context)
@@ -26,6 +28,12 @@ class MovieListAdapter: PagingDataAdapter<Movie, MovieListAdapter.ViewHolder>(MO
         holder.movieName.text = movie?.originalTitle
         holder.movieReleaseDate.text = movie?.releaseDate
         holder.movieOverview.text = movie?.overview
+
+        holder.itemView.setOnClickListener {
+            movie?.let {
+                onMovieItemSelected(it.id)
+            }
+        }
 
         Glide.with(holder.itemView.context)
             .load("http://image.tmdb.org/t/p/w185/${movie?.posterPath}")

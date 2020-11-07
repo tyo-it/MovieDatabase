@@ -1,5 +1,6 @@
  package com.ittyo.moviedatabase.view.search
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.inputmethod.EditorInfo
@@ -10,6 +11,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ittyo.moviedatabase.R
+import com.ittyo.moviedatabase.view.details.MovieDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_search_movie.*
 import kotlinx.coroutines.Job
@@ -28,7 +30,7 @@ import java.io.IOException
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_search_movie)
 
-        movieListAdapter = MovieListAdapter()
+        movieListAdapter = MovieListAdapter{ movieId ->  goToMovieDetailsActivity(movieId) }
         movie_list.layoutManager = GridLayoutManager(this, 2)
         movie_list.adapter = movieListAdapter.run {
             addLoadStateListener { loadState ->
@@ -68,13 +70,13 @@ import java.io.IOException
         }
     }
 
-    private fun search(query: String) {
-        if (query.isBlank()) {
+     private fun search(query: String) {
+         if (query.isBlank()) {
             showInfoToast("empty search input")
             return
-        }
-        searchMovieViewModel.searchMovie(query)
-    }
+         }
+         searchMovieViewModel.searchMovie(query)
+     }
 
      private fun showInfoToast(message: String) {
          Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
@@ -87,5 +89,12 @@ import java.io.IOException
              error.localizedMessage
          }
          Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+     }
+
+     private fun goToMovieDetailsActivity(movieId: Int) {
+         val intent = Intent(this, MovieDetailsActivity::class.java).apply {
+             putExtra("MOVIE_ID", movieId)
+         }
+         startActivity(intent)
      }
 }
