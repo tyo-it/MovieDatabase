@@ -1,4 +1,4 @@
- package com.ittyo.moviedatabase.view
+ package com.ittyo.moviedatabase.view.search
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -11,13 +11,13 @@ import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
 import com.ittyo.moviedatabase.R
 import dagger.hilt.android.AndroidEntryPoint
-import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_search_movie.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.io.IOException
 
  @AndroidEntryPoint
- class MainActivity : AppCompatActivity() {
+ class SearchMovieActivity : AppCompatActivity() {
 
     private lateinit var movieListAdapter: MovieListAdapter
 
@@ -26,7 +26,7 @@ import java.io.IOException
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_search_movie)
 
         movieListAdapter = MovieListAdapter()
         movie_list.layoutManager = GridLayoutManager(this, 2)

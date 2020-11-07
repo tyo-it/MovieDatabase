@@ -1,4 +1,4 @@
-package com.ittyo.moviedatabase.view
+package com.ittyo.moviedatabase.view.search
 
 import android.view.LayoutInflater
 import android.view.View

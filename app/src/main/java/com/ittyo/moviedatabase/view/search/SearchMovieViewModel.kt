@@ -1,4 +1,4 @@
-package com.ittyo.moviedatabase.view
+package com.ittyo.moviedatabase.view.search
 
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.MutableLiveData

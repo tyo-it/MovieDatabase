@@ -5,7 +5,7 @@ import androidx.lifecycle.Observer
 import androidx.paging.PagingData
 import com.ittyo.moviedatabase.model.Movie
 import com.ittyo.moviedatabase.repository.MovieRepository
-import com.ittyo.moviedatabase.view.SearchMovieViewModel
+import com.ittyo.moviedatabase.view.search.SearchMovieViewModel
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
