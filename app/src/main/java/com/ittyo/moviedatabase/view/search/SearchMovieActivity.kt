@@ -10,6 +10,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.ittyo.moviedatabase.R
 import com.ittyo.moviedatabase.view.details.MovieDetailsActivity
 import dagger.hilt.android.AndroidEntryPoint
@@ -31,7 +32,7 @@ import java.io.IOException
         setContentView(R.layout.activity_search_movie)
 
         movieListAdapter = MovieListAdapter{ movieId ->  goToMovieDetailsActivity(movieId) }
-        movie_list.layoutManager = GridLayoutManager(this, 2)
+        movie_list.layoutManager = LinearLayoutManager(this)
         movie_list.adapter = movieListAdapter.run {
             addLoadStateListener { loadState ->
                 movie_list.isVisible = loadState.source.refresh is LoadState.NotLoading

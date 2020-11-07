@@ -9,6 +9,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.ittyo.moviedatabase.R
 import com.ittyo.moviedatabase.model.Movie
 
@@ -37,6 +38,7 @@ class MovieListAdapter(
 
         Glide.with(holder.itemView.context)
             .load("http://image.tmdb.org/t/p/w185/${movie?.posterPath}")
+            .transform(CenterCrop())
             .into(holder.moviePoster)
     }
 
