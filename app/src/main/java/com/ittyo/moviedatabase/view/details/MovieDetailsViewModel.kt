@@ -13,8 +13,8 @@ class MovieDetailsViewModel @ViewModelInject constructor(
     private val movieRepository: MovieRepository
 ): ViewModel() {
 
-    val _data = MutableLiveData<MovieDetails>()
-    val _error = MutableLiveData<Exception>()
+    private val _data = MutableLiveData<MovieDetails>()
+    private val _error = MutableLiveData<Exception>()
 
     val data: LiveData<MovieDetails> = _data
     val error: LiveData<Exception> = _error

@@ -59,7 +59,7 @@ class MovieDetailsActivity: AppCompatActivity() {
             }
         }
 
-        viewModel._error.observe(this) { error ->
+        viewModel.error.observe(this) { error ->
             showErrorToast(error)
         }
 
