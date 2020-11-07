@@ -9,7 +9,6 @@ import androidx.activity.viewModels
 import androidx.core.view.isVisible
 import androidx.lifecycle.lifecycleScope
 import androidx.paging.LoadState
-import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ittyo.moviedatabase.R
 import com.ittyo.moviedatabase.view.details.MovieDetailsActivity
@@ -17,6 +16,7 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.activity_search_movie.*
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
+import retrofit2.HttpException
 import java.io.IOException
 
  @AndroidEntryPoint
@@ -69,6 +69,10 @@ import java.io.IOException
                 movieListAdapter.submitData(pagingData)
             }
         }
+
+        searchMovieViewModel.error.observe(this) { error ->
+            showErrorToast(error)
+        }
     }
 
      private fun search(query: String) {
@@ -84,7 +88,7 @@ import java.io.IOException
      }
 
      private fun showErrorToast(error: Throwable) {
-         val message = if (error is IOException) {
+         val message = if (error is IOException || error is HttpException) {
              this.getString(R.string.fetch_failed)
          } else {
              error.localizedMessage
