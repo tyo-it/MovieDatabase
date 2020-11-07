@@ -33,7 +33,7 @@ class MovieDetailsActivity: AppCompatActivity() {
 
             movieDetails.backdropPath?.let {
                 Glide.with(this)
-                    .load("http://image.tmdb.org/t/p/w780/${it}")
+                    .load("http://image.tmdb.org/t/p/w300/${it}")
                     .transform(CenterCrop())
                     .into(movie_backdrop)
             }

@@ -37,7 +37,7 @@ class MovieListAdapter(
         }
 
         Glide.with(holder.itemView.context)
-            .load("http://image.tmdb.org/t/p/w185/${movie?.posterPath}")
+            .load("http://image.tmdb.org/t/p/w154/${movie?.posterPath}")
             .transform(CenterCrop())
             .into(holder.moviePoster)
     }
