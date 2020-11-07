@@ -12,6 +12,7 @@ import com.nhaarman.mockitokotlin2.whenever
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.test.TestCoroutineDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.setMain
@@ -52,7 +53,7 @@ class SearchMovieViewModelTest {
     }
 
     @Test
-    fun `when user search movie it will emit the search result`(){
+    fun `when user search movie it will emit the search result`() = runBlocking {
         whenever(repository.searchMovie(any())).thenAnswer {
             flow {
                 val movie = makeMovie(title= "Doraemon")
