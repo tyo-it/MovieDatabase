@@ -26,7 +26,7 @@ class MovieDetailsActivity: AppCompatActivity() {
         viewModel.data.observe(this) { movieDetails ->
             movieDetails.posterPath?.let {
                 Glide.with(this)
-                    .load("http://image.tmdb.org/t/p/w185/${it}")
+                    .load("http://image.tmdb.org/t/p/w154/${it}")
                     .transform(CenterCrop())
                     .into(movie_poster)
             }
