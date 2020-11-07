@@ -6,6 +6,7 @@ import androidx.paging.PagingData
 import com.ittyo.moviedatabase.model.Movie
 import com.ittyo.moviedatabase.repository.MovieRepository
 import com.ittyo.moviedatabase.view.search.SearchMovieViewModel
+import com.ittyo.moviedatabase.view.util.makeMovie
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.verify
 import com.nhaarman.mockitokotlin2.whenever
@@ -66,35 +67,4 @@ class SearchMovieViewModelTest {
         verify(observer).onChanged(any())
     }
 
-    fun makeMovie(id: Int = 0,
-        popularity: Double = 0.0,
-        voteCount: Int = 0,
-        video: Boolean = false,
-        posterPath: String = "",
-        backdropPath: String = "",
-        originalLanguage: String = "",
-        originalTitle: String = "",
-        genreIds: List<Int> = emptyList(),
-        releaseDate: String = "",
-        overview: String = "",
-        voteAverage: Double = 0.0,
-        title: String = "",
-        adult: Boolean = false): Movie {
-        return Movie(
-            id,
-            popularity,
-            voteCount,
-            video,
-            posterPath,
-            adult,
-            backdropPath,
-            originalLanguage,
-            originalTitle,
-            genreIds,
-            title,
-            voteAverage,
-            overview,
-            releaseDate
-        )
-    }
 }
