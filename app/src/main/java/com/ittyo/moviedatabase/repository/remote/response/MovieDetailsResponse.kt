@@ -2,7 +2,7 @@ package com.ittyo.moviedatabase.repository.remote.response
 
 import com.google.gson.annotations.SerializedName
 
-data class MovieDetailResponse(
+data class MovieDetailsResponse(
     @SerializedName("id")
     val id: Int,
 

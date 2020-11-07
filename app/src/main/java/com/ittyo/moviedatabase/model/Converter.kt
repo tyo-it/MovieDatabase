@@ -1,7 +1,7 @@
 package com.ittyo.moviedatabase.model
 
 import com.ittyo.moviedatabase.repository.remote.response.GenreResponse
-import com.ittyo.moviedatabase.repository.remote.response.MovieDetailResponse
+import com.ittyo.moviedatabase.repository.remote.response.MovieDetailsResponse
 import com.ittyo.moviedatabase.repository.remote.response.MovieResponse
 
 fun MovieResponse.toMovieModel(): Movie {
@@ -23,8 +23,8 @@ fun MovieResponse.toMovieModel(): Movie {
     )
 }
 
-fun MovieDetailResponse.toMovieDetailModel(): MovieDetail {
-    return MovieDetail(
+fun MovieDetailsResponse.toMovieDetailsModel(): MovieDetails {
+    return MovieDetails(
         id = this.id,
         adult = this.adult,
         backdropPath = this.backdropPath,
