@@ -1,6 +1,7 @@
 package com.ittyo.moviedatabase.view.details
 
 import androidx.hilt.lifecycle.ViewModelInject
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -12,12 +13,20 @@ class MovieDetailsViewModel @ViewModelInject constructor(
     private val movieRepository: MovieRepository
 ): ViewModel() {
 
-    val data = MutableLiveData<MovieDetails>()
+    val _data = MutableLiveData<MovieDetails>()
+    val _error = MutableLiveData<Exception>()
+
+    val data: LiveData<MovieDetails> = _data
+    val error: LiveData<Exception> = _error
 
     fun showMovieDetails(movieId: Int) {
         viewModelScope.launch {
-            val movieDetails: MovieDetails = movieRepository.getMovieDetails(movieId)
-            data.value = movieDetails
+            try {
+                val movieDetails: MovieDetails = movieRepository.getMovieDetails(movieId)
+                _data.value = movieDetails
+            } catch (e: Exception) {
+                _error.value = e
+            }
         }
     }
 }
